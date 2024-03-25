@@ -4,12 +4,18 @@ class Solution(object):
         :type nums: List[int]
         :type target: int
         :rtype: List[int]
-        """        
-        item_count = len(nums)
-        for i in range(item_count):
-            for j in range(item_count):
-                if i == j:
-                    continue
-                if (nums[i] + nums[j]) == target:
-                    return [i,j]
+        """
+        # This is ~ O(n^2) => for loops and finding indexes
+        # for index, num in enumerate(nums):
+        #     remaining = target - num
+        #     if remaining in nums and nums.index(remaining)!=index:
+        #         return [index, nums.index(remaining)]
+
+        # O(n) => for loop and find elements in dict takes O(1) on avg
+        already_found = {}
+        for index, num in enumerate(nums):
+            remaining = target - num
+            if remaining in already_found:
+                return [already_found[remaining], index]
+            already_found[num] = index
         
