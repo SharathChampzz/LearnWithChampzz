@@ -8,4 +8,5 @@ class Solution:
 
         if total % 2 == 0: # if even take average of the two middle elements
             return (nums1[mid] + nums1[mid - 1]) / 2
-        return nums1[mid] # if odd directly pick the middle element
+        else:
+            return nums1[mid] # if odd directly pick the middle element
