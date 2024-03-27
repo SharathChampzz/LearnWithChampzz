@@ -7,6 +7,7 @@ class Solution:
         mid = total // 2
 
         if total % 2 == 0: # if even take average of middle elements
-            return (nums1[mid] + nums1[mid - 1]) / 2
+            result = (nums1[mid] + nums1[mid - 1]) / 2
         else: # if old directly pick the middle element
-            return nums1[mid]
+            result = nums1[mid]
+        return result
