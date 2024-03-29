@@ -1,9 +1,8 @@
 class Solution:
     def reverse(self, x: int) -> int:    
-        negative = x*-1 > 0
+        negative = x < 0
 
-        if negative:
-            x *= -1 # make it as positive
+        x = abs(x)
 
         # reverse = int(str(x)[::-1])
         # result = -reverse if negative else reverse
@@ -13,10 +12,11 @@ class Solution:
             reverse = reverse * 10 + x % 10
             x = x // 10
             
-        result = -reverse if negative else reverse
+        if negative:
+            reverse *= -1
         
-        if result >= pow(2,31)-1 or result <= pow(-2, 31):
+        if reverse >= 2**31-1 or reverse <= -2**31:
             return 0
 
-        return result
+        return reverse
         
