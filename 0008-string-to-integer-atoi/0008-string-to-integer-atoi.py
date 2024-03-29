@@ -3,7 +3,7 @@ class Solution:
         s = s.strip()
         if not s:
             return 0
-
+        
         sign = 1
         result = 0
         i = 0
