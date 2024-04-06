@@ -1,7 +1,9 @@
 class Solution:
     def letterCombinations(self, digits):
+        result = []
+        
         if not digits:
-            return []
+            return result
 
         # Define a dictionary mapping digits to their respective letters
         phone_mapping = {
@@ -14,25 +16,37 @@ class Solution:
             '8': 'tuv',
             '9': 'wxyz'
         }
-
+         
         def backtrack(index, path):
-            # If the current path is of the same length as the input digits, add it to the result
             if len(path) == len(digits):
-                combinations.append(''.join(path))
+                result.append(path)
                 return
+            for char in phone_mapping[digits[index]]:
+                backtrack(index+1, path+char)
+                
+        backtrack(0, "")
+        
+        return result
+                
 
-            # Get the letters corresponding to the current digit
-            letters = phone_mapping[digits[index]]
+#         def backtrack(index, path):
+#             # If the current path is of the same length as the input digits, add it to the result
+#             if len(path) == len(digits):
+#                 combinations.append(''.join(path))
+#                 return
 
-            # Iterate through each letter and recursively backtrack
-            for letter in letters:
-                path.append(letter)  # Add the letter to the current path
-                backtrack(index + 1, path)  # Recur with the next digit
-                path.pop()  # Backtrack by removing the added letter
+#             # Get the letters corresponding to the current digit
+#             letters = phone_mapping[digits[index]]
 
-        combinations = []  # List to store the combinations
-        backtrack(0, [])  # Start the backtracking from index 0 with an empty path
-        return combinations
+#             # Iterate through each letter and recursively backtrack
+#             for letter in letters:
+#                 path.append(letter)  # Add the letter to the current path
+#                 backtrack(index + 1, path)  # Recur with the next digit
+#                 path.pop()  # Backtrack by removing the added letter
+
+#         combinations = []  # List to store the combinations
+#         backtrack(0, [])  # Start the backtracking from index 0 with an empty path
+#         return combinations
 
 
         # if not digits:
