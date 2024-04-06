@@ -29,26 +29,6 @@ class Solution:
         return result
                 
 
-#         def backtrack(index, path):
-#             # If the current path is of the same length as the input digits, add it to the result
-#             if len(path) == len(digits):
-#                 combinations.append(''.join(path))
-#                 return
-
-#             # Get the letters corresponding to the current digit
-#             letters = phone_mapping[digits[index]]
-
-#             # Iterate through each letter and recursively backtrack
-#             for letter in letters:
-#                 path.append(letter)  # Add the letter to the current path
-#                 backtrack(index + 1, path)  # Recur with the next digit
-#                 path.pop()  # Backtrack by removing the added letter
-
-#         combinations = []  # List to store the combinations
-#         backtrack(0, [])  # Start the backtracking from index 0 with an empty path
-#         return combinations
-
-
         # if not digits:
         #     return []
 
