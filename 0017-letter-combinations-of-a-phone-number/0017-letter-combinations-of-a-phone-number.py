@@ -1,28 +1,38 @@
 class Solution:
-    def letterCombinations(self, digits: str) -> List[str]:
+    def letterCombinations(self, digits):
+        if not digits:
+            return []
 
-        res = []
-        digitToChar = {"2":"abc",
-        "3":"def",
-        "4":"ghi",
-        "5":"jkl",
-        "6":"mno",
-        "7":"pqrs",
-        "8":"tuv",
-        "9":"wxyz"        }
+        # Define a dictionary mapping digits to their respective letters
+        phone_mapping = {
+            '2': 'abc',
+            '3': 'def',
+            '4': 'ghi',
+            '5': 'jkl',
+            '6': 'mno',
+            '7': 'pqrs',
+            '8': 'tuv',
+            '9': 'wxyz'
+        }
 
-        def backtrack(i,curStr):
-            if len(curStr)==len(digits):
-                res.append(curStr)
+        def backtrack(index, path):
+            # If the current path is of the same length as the input digits, add it to the result
+            if len(path) == len(digits):
+                combinations.append(''.join(path))
                 return
-            for c in digitToChar[digits[i]]:
-                backtrack(i+1,curStr+c)
 
-        if digits:
-            backtrack(0,"")
+            # Get the letters corresponding to the current digit
+            letters = phone_mapping[digits[index]]
 
-        return res
-        
+            # Iterate through each letter and recursively backtrack
+            for letter in letters:
+                path.append(letter)  # Add the letter to the current path
+                backtrack(index + 1, path)  # Recur with the next digit
+                path.pop()  # Backtrack by removing the added letter
+
+        combinations = []  # List to store the combinations
+        backtrack(0, [])  # Start the backtracking from index 0 with an empty path
+        return combinations
 
 
         # if not digits:
