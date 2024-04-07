@@ -5,25 +5,39 @@
 #         self.next = next
 class Solution:
     def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
-        dummy_node = ListNode()
-        start = dummy_node
-
-        while list1 or list2:
-            if list1 and list2:
-                if list1.val <= list2.val:  # Combine the conditions for less or equal values
-                    start.next = ListNode(list1.val)
-                    list1 = list1.next
-                else:
-                    start.next = ListNode(list2.val)
-                    list2 = list2.next
-                start = start.next  # Moved outside of the if-else block
-            elif list1:
-                start.next = list1
-                break
+        cur = dummy = ListNode()
+        while list1 and list2:
+            if list1.val < list2.val:
+                cur.next = list1
+                list1, cur = list1.next, list1
             else:
-                start.next = list2
-                break
+                cur.next = list2
+                list2, cur = list2.next, list2
+                
+        if list1 or list2:
+            cur.next = list1 if list1 else list2
+            
+        return dummy.next
+    
+# class Solution:
+#     def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
+#         dummy_node = ListNode()
+#         start = dummy_node
 
-            # start = start.next  # Moved outside of the if-elif-else block
+#         while list1 or list2:
+#             if list1 and list2:
+#                 if list1.val <= list2.val:
+#                     start.next = ListNode(list1.val)
+#                     list1 = list1.next
+#                 else:
+#                     start.next = ListNode(list2.val)
+#                     list2 = list2.next
+#                 start = start.next
+#             elif list1:
+#                 start.next = list1
+#                 break
+#             else:
+#                 start.next = list2
+#                 break
 
-        return dummy_node.next
+#         return dummy_node.next
