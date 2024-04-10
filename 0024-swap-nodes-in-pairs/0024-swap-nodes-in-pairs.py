@@ -9,15 +9,13 @@ class Solution:
         dummy.next = head
         current = dummy
 
-        # we need atleast two nodes for swapping
         while current.next and current.next.next:
-            current_node, node1, node2 = current.next, current.next.next, current.next.next.next
+            # read the 3 nodes
+            node1, node2, node3 = current.next, current.next.next, current.next.next.next
 
-            current.next, node1.next, current_node.next = node1, current_node, node2
+            # swap the nodes
+            current.next, node2.next, node1.next = node2, node1, node3
 
-            current = current_node
+            current = node1
         
         return dummy.next
-
-
-        
