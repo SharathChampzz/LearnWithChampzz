@@ -4,9 +4,7 @@ class Solution:
         
         def check_string_match(start_index):
             for char in needle:
-                if start_index >= length:
-                    return False
-                if char != haystack[start_index]:
+                if start_index >= length or char != haystack[start_index]:
                     return False
                 start_index += 1
             return True
