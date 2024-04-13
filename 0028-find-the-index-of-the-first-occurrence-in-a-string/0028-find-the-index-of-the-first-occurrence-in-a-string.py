@@ -11,9 +11,7 @@ class Solution:
             return True
 
         for i in range(length-needle_length+1):
-            if haystack[i] == needle[0]:
-                status = check_string_match(i)
-                if status:
-                    return i
+            if haystack[i:i + needle_length] == needle:
+                return i
 
         return -1
