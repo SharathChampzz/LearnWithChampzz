@@ -1,6 +1,7 @@
 class Solution:
     def strStr(self, haystack: str, needle: str) -> int:
         length = len(haystack)
+        needle_length = len(needle)
         
         def check_string_match(start_index):
             for char in needle:
@@ -9,7 +10,7 @@ class Solution:
                 start_index += 1
             return True
 
-        for i in range(length):
+        for i in range(length-needle_length+1):
             if haystack[i] == needle[0]:
                 status = check_string_match(i)
                 if status:
