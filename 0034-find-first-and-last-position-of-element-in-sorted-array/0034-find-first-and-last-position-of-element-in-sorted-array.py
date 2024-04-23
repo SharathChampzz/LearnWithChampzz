@@ -1,5 +1,6 @@
 class Solution:
     def searchRange(self, nums: List[int], target: int) -> List[int]:
+        
         # Helper function to find the leftmost occurrence of target
         def findLeft(nums, target):
             left, right = 0, len(nums) - 1
