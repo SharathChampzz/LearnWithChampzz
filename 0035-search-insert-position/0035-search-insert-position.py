@@ -14,5 +14,6 @@ class Solution:
                 right = mid - 1
             else:
                 left = mid + 1
-
-        return left # left index will hold the next possible insertion for the given target
+        
+        # left index will hold the next possible insertion for the given target
+        return left
