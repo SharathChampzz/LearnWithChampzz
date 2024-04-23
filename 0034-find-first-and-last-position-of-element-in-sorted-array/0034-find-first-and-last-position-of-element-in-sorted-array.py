@@ -1,40 +1,39 @@
 class Solution:
     def searchRange(self, nums: List[int], target: int) -> List[int]:
-        length = len(nums)
-        
-        def binary_search():
-            left = 0
-            right = length-1
-
+        # Helper function to find the leftmost occurrence of target
+        def findLeft(nums, target):
+            left, right = 0, len(nums) - 1
             while left <= right:
-                mid = (left + right) // 2
-
+                mid = left + (right - left) // 2
                 if nums[mid] == target:
-                    return mid
-
-                if target < nums[mid]:
-                    right = mid - 1
-                else:
+                    if mid == 0 or nums[mid - 1] != target:
+                        return mid  # Found leftmost occurrence
+                    else:
+                        right = mid - 1  # Continue searching left
+                elif nums[mid] < target:
                     left = mid + 1
+                else:
+                    right = mid - 1
+            return -1  # Target not found
 
-            return -1
+        # Helper function to find the rightmost occurrence of target
+        def findRight(nums, target):
+            left, right = 0, len(nums) - 1
+            while left <= right:
+                mid = left + (right - left) // 2
+                if nums[mid] == target:
+                    if mid == len(nums) - 1 or nums[mid + 1] != target:
+                        return mid  # Found rightmost occurrence
+                    else:
+                        left = mid + 1  # Continue searching right
+                elif nums[mid] < target:
+                    left = mid + 1
+                else:
+                    right = mid - 1
+            return -1  # Target not found
 
-        index = binary_search()
+        # Find leftmost and rightmost occurrences
+        leftmost = findLeft(nums, target)
+        rightmost = findRight(nums, target)
 
-        if index == -1:
-            return [-1,-1]
-
-        left = right = index
-
-        while left > 0 or right < length-1:
-            prev_left, prev_right = left, right
-            if left > 0 and nums[left-1] == target:
-                left -= 1
-            if right < length-1 and nums[right+1] == target:
-                right += 1
-            
-            # if left and right values are not modified, then we can stop here
-            if prev_left == left and prev_right == right:
-                break
-
-        return [left, right]
+        return [leftmost, rightmost]
