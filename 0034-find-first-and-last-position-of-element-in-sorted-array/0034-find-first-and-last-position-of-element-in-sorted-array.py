@@ -5,7 +5,7 @@ class Solution:
         def findLeft(nums, target):
             left, right = 0, len(nums) - 1
             while left <= right:
-                # to avoid integer overflow issues incase of large arrays using below instead of (left+right)//2
+                # To avoid integer overflow issues incase of large arrays using below instead of (left+right)//2
                 # when left and right are large integers, taking sum of it could overflow
                 # So, take diff => divide by 2 => add it to the left => It will give us the mid
                 mid = left + (right - left) // 2
