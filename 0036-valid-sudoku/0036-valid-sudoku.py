@@ -1,5 +1,33 @@
 class Solution:
     def isValidSudoku(self, board: List[List[str]]) -> bool:
+        # we will maintain mapping for rows, columns and subbox, as we iterate through
+        # so that we can directly check if the element is already present in row/column/subbox
+        # instead of doing repeatitive iteration
+        
+        rows = defaultdict(set)
+        columns = defaultdict(set)
+        subbox = defaultdict(set)
+
+        for i in range(9):
+            for j in range(9):
+                num = board[i][j]
+
+                if num == '.':
+                    continue
+                
+                if num in rows[i] or num in columns[j] or num in subbox[(i//3, j//3)]:
+                    return False
+                    
+                rows[i].add(num)
+                columns[j].add(num)
+                subbox[(i//3, j//3)].add(num)
+                # subboxes also like an 2-D array, we can represent (0,0)...(2,2)
+                # as subboxes are split by 3-3-3 elements, divide by 3 and get quotient
+                # getting quotient will get us the index of the subbox in 2D array
+
+        return True
+
+    def TempisValidSudoku(self, board: List[List[str]]) -> bool:
         
         def check_row(x,y):
             current_value = board[x][y]
