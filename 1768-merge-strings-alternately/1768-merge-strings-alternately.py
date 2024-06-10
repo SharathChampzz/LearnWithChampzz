@@ -12,12 +12,8 @@ class Solution:
             i += 1
 
         if len1 > min_len:
-            while i < len1:
-                result += word1[i]
-                i += 1
+            result += word1[i:]
         else:
-            while i < len2:
-                result += word2[i]
-                i += 1
+            result += word2[i:]
 
         return result
