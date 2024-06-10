@@ -11,7 +11,7 @@ class Solution:
             j += 1
 
         # Append the remaining characters of the longer string
-        merged_string += word1[i:]
+        merged_string += word1[i:] # sliciing doesnot raise exception for out of range, it handles it
         merged_string += word2[j:]
 
         return merged_string
