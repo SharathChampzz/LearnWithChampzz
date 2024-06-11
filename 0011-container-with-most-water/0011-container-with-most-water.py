@@ -1,18 +1,20 @@
 class Solution:
     def maxArea(self, height: List[int]) -> int:
-        max_water = 0
-        length = len(height)
+        n = len(height)
         left = 0
-        right = length - 1
+        right = n - 1
+        max_vol = 0
 
         while left < right:
-            current_area = min(height[left], height[right])*(right-left)
-            print(current_area)
-            max_water = max(current_area, max_water)
+            current_volume = min(height[left], height[right]) * (right - left)
+            max_vol = max(max_vol, current_volume)
 
-            if height[left] < height[right]:
+            # idea is, we will try to get max volume by looking for more heights
+            
+            # height of left is less so lets move to the next one from left side, If we get more height volume would be more.
+            if height[left] <= height[right]:
                 left += 1
             else:
                 right -= 1
 
-        return max_water
+        return max_vol
