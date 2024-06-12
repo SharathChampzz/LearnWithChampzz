@@ -11,7 +11,6 @@ class Solution:
         w_end = k
 
         while w_end < length:
-            print(current_sum)
             current_sum += nums[w_end] - nums[w_start-1]
             max_sum = max(max_sum, current_sum)
 
