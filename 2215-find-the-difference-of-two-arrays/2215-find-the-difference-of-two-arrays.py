@@ -4,4 +4,6 @@ class Solution:
         n2 = set(nums2)
 
         return [list(n1-n2), list(n2-n1)]
+    
+    # other set operations union a.update(b) , intersection (&), difference (-), symmetric difference (^)
         
