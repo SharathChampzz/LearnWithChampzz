@@ -7,14 +7,9 @@ class RecentCounter:
         self.recent_requests.append(t) # add new requests to the list
         
         while self.recent_requests and self.recent_requests[0] < t-3000:
-            self.recent_requests.pop(0)
+            self.recent_requests.pop(0) # flush the old timestamp values
             
         return len(self.recent_requests)
-        # flush the values, we dont need anymore
-        for i in self.recent_requests:
-            if i >= t-3000: # latest values starts from here
-                return len(self.recent_requests)
-            self.recent_requests.pop(0) # pop the values which are older than 3 seconds
 
 # Your RecentCounter object will be instantiated and called as such:
 # obj = RecentCounter()
