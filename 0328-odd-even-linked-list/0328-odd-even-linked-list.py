@@ -27,6 +27,6 @@ class Solution:
         even_list.next = None
 
         # join odd and even list
-        odd_list.next = temp_even_node.next # ignore the first node
+        odd_list.next = temp_even_node.next # ignore the first node, as it is dummy node
 
-        return temp_odd_node.next # ignore the first node
+        return temp_odd_node.next # ignore the first node, as it is dummy node
