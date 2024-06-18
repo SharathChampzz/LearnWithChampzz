@@ -7,17 +7,31 @@
 class Solution:
     def leafSimilar(self, root1: Optional[TreeNode], root2: Optional[TreeNode]) -> bool:
         
-        def get_leaf_nodes(root):
-            if not root:
-                return []
+#         def get_leaf_nodes(root):
+#             if not root:
+#                 return []
                 
-            if not root.left and not root.right:
-                return [root.val]
+#             if not root.left and not root.right:
+#                 return [root.val]
 
-            left = get_leaf_nodes(root.left)
-            right = get_leaf_nodes(root.right)
+#             left = get_leaf_nodes(root.left)
+#             right = get_leaf_nodes(root.right)
 
-            return left + right
+#             return left + right
+        
+        def get_leaf_nodes(root):
+            leaves = []
+
+            def dfs(node):
+                if node is not None:
+                    if not node.left and not node.right:
+                        leaves.append(node.val)
+                    dfs(node.left)
+                    dfs(node.right)
+
+            dfs(root)
+            return leaves
+
 
         leafs_1 = get_leaf_nodes(root1)
         leafs_2 = get_leaf_nodes(root2)
