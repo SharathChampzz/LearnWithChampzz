@@ -8,20 +8,20 @@ class Solution:
     def goodNodes(self, root: TreeNode) -> int:
         good_nodes = []
 
-        def pre_order(current_node, path):
+        def pre_order(current_node, max_element_so_far):
             if not current_node:
                 return
             
-            # not path is used to handle empty path at main too node
-            # else max([]) would cause exception
-            if (not path) or max(path) <= current_node.val:
+            # We will check if there was any big element found in the path
+            if max_element_so_far <= current_node.val:
                 good_nodes.append(current_node.val)
+                max_element_so_far = current_node.val # current node is bigger/equal than all previous
 
-            pre_order(current_node.left, path + [current_node.val])
-            pre_order(current_node.right, path + [current_node.val])
+            pre_order(current_node.left, max_element_so_far)
+            pre_order(current_node.right, max_element_so_far)
             
 
-        pre_order(root, [])
+        pre_order(root, root.val)
 
         print(f'Good Nodes: {good_nodes}')
         return len(good_nodes)
