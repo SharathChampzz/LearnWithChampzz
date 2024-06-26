@@ -1,9 +1,10 @@
 class Solution:
     def uniqueOccurrences(self, arr: List[int]) -> bool:
+        # Method 1
         count = Counter(arr) # from collections import Counter, It will do the count
         return len(count) == len(set(count.values()))
         
-        
+        # Method 2
         occurences = defaultdict(int)
         unique_counts = set()
 
