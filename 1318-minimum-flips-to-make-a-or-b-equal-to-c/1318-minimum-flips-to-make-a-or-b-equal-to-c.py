@@ -2,7 +2,7 @@ class Solution:
     def minFlips(self, a: int, b: int, c: int) -> int:
         """
         Based on "bit_c" analyse what "bit_a" and "bit_b" should be.
-        """
+        """        
         flip_count = 0
 
         while a > 0  or b > 0 or c > 0:
