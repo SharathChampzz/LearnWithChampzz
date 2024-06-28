@@ -17,14 +17,18 @@ class Solution:
             '9': 'wxyz'
         }
          
-        def backtrack(index, path):
-            if len(path) == len(digits):
+        req_combination_len = len(digits)
+
+        def back_track(path: str, current_digit_index: int):
+            if len(path) == req_combination_len:
                 result.append(path)
                 return
-            for char in phone_mapping[digits[index]]:
-                backtrack(index+1, path+char)
-                
-        backtrack(0, "")
+            
+            digit = digits[current_digit_index]
+            for char in phone_mapping[digit]:
+                back_track(path + char, current_digit_index+1)
+
+        back_track('', 0)
         
         return result
                 
