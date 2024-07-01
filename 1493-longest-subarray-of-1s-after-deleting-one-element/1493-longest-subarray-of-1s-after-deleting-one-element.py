@@ -1,6 +1,6 @@
 class Solution:
     def longestSubarray(self, nums: List[int]) -> int:
-        # same question as previous, just that k == 1 in this condition and we need to subtract 1 from the result, as we are deleting it.
+        # same question as previous, just that k == 1 in this condition and we need to subtract 1 from the result, as we are deleting 0 from the list and not swapping.
         right = 0
         length = len(nums)
         max_size = 0
