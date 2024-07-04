@@ -1,6 +1,5 @@
 class Solution:
     def findMinArrowShots(self, points: List[List[int]]) -> int:
-        
         points.sort()
 
         arrow_count = 0
@@ -8,19 +7,18 @@ class Solution:
         i = 0
 
         while i < n:
-            x, y = points[i]
+            x, y = points[i] # starting range
             # print(f'x:{x} , y:{y}')
 
             while i < n - 1:
                 i += 1
-                new_x, new_y = points[i]
+                new_x, new_y = points[i] # new range
 
                 # check for overlap:
-                if new_x >= x and new_x <= y: # not sure if we should consider if ending matches <= or just <
-                    if new_y < y:
-                        y = new_y # if y is less, then merged interval will be this one
-                    x, y = [new_x, y]
-                    print(f'(x,y) == {x},{y}')
+                if new_x >= x and new_x <= y: # There is overlap, new_x is between the starting range
+                    
+                    x, y = [new_x, y if new_y > y else new_y] # merged one or this will be a new starting range to check from
+                    # print(f'(x,y) == {x},{y}')
                 else:
                     break
             else:
