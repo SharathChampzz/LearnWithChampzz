@@ -1,30 +1,19 @@
 class Solution:
     def findMinArrowShots(self, points: List[List[int]]) -> int:
-        if not points: return 0
-        points.sort()
+        if not points:
+            return 0
+        
+        # Sort points by their end coordinates
+        points.sort(key=lambda x: x[1])
+        
+        arrow_count = 1
+        end = points[0][1]
 
-        arrow_count = 0
-        n = len(points)
-        i = 0
+        for i in range(1, len(points)):
+            start, new_end = points[i]
 
-        while i < n:
-            x, y = points[i] # starting range
-            # print(f'x:{x} , y:{y}')
-
-            while i < n - 1:
-                i += 1
-                new_x, new_y = points[i] # new range
-
-                # check for overlap:
-                if new_x >= x and new_x <= y: # There is overlap, new_x is between the starting range
-                    
-                    x, y = [new_x, y if new_y > y else new_y] # merged one or this will be a new starting range to check from
-                    # print(f'(x,y) == {x},{y}')
-                else:
-                    break
-            else:
-                i += 1 # the last loop, we dont have 
-
-            arrow_count += 1
-
+            if start > end:
+                arrow_count += 1
+                end = new_end
+        
         return arrow_count
