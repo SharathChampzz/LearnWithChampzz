@@ -10,9 +10,9 @@ class Solution:
         stack = []
 
         for index, i in enumerate(temperatures):
-            if not stack:
-                stack.append((index, i))
-                continue
+            # if not stack:
+            #     stack.append((index, i))
+            #     continue
 
             while stack and stack[-1][1] < i:
                 old_index, old_value = stack.pop()
