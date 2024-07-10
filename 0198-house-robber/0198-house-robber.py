@@ -25,7 +25,7 @@ class Solution:
 
         # If we are here, It means there is atleast 3 house
         
-        # calculation for first and second house
+        # Store max loot calculation for first and second house, So that we can use it from the third house
         n_2, n_1 = nums[0], max(nums[0], nums[1])
 
         # calculation from third house
@@ -34,7 +34,7 @@ class Solution:
             n_1 = max(n_2 + nums[i], n_1)
             n_2 = temp
 
-        return n_1           
+        return n_1
         
 
     def rob_using_backtrack(self, nums: List[int]) -> int:
