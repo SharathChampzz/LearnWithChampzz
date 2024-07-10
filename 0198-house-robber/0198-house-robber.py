@@ -34,7 +34,7 @@ class Solution:
             n_1 = max(n_2 + nums[i], n_1)
             n_2 = temp
 
-        return n_1
+        return n_1 # final max loot
         
 
     def rob_using_backtrack(self, nums: List[int]) -> int:
