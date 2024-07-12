@@ -1,11 +1,11 @@
 class Solution:
     def uniquePaths(self, m: int, n: int) -> int:
-        dp = [[1]*n]*m # initialize 2D board with size m*n
+        dp = [[1]*n]*m # initialize 2D board with size m*n 
 
         # now build the possible combination board
         # idea is, you can reach to the point only from top or from left. 
-        # so, if we are already in how many ways we can reach to the top location and left location
-        # we can simply take sum of it to get the current location
+        # so, if we are already know in how many ways we can reach to the top location and left location
+        # we can simply take sum of it to get the current location possiblity
         # total_possible_ways (x,y) = arr[x-1][y] (top) + arr[x][y-1] (bottom)
         
         for i in range(m):
