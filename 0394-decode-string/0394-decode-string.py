@@ -11,11 +11,10 @@ class Solution:
             Build the last number too and find the substr answer wiz (number*substring)
             So either we got full answer or substring answer, Add this result to stack again at once, so that it will be usefull for next calculation
         """
-
         for char in s:
-
             if char != ']':
                 stack.append(char)
+                
             else:
                 # pop it until you get open bracket and build substring
                 sub_str = ""
@@ -36,7 +35,7 @@ class Solution:
                 # add the substring to stack after solving the subproblem
                 stack.append(result_str)
 
-        
+        # stack will be having results from [sub_string, sub_string, sub_string]
         result = ""
         while stack:
             result = stack.pop() + result
