@@ -57,10 +57,25 @@ class Solution:
                     queue.append((nr, nc))
                     grid[nr][nc] = "0" # mark visited by making it as water
 
+        def dfs(i, j):
+            # Boundary checks and check if current cell is water or already visited
+            if i < 0 or i >= len(grid) or j < 0 or j >= len(grid[0]) or grid[i][j] == '0':
+                return
+
+            # Mark the cell as visited by setting it to '0'
+            grid[i][j] = '0'
+
+            # Visit all adjacent cells (up, down, left, right)
+            dfs(i + 1, j)
+            dfs(i - 1, j)
+            dfs(i, j + 1)
+            dfs(i, j - 1)
+                    
         for row in range(rows):
             for col in range(cols):
                 if grid[row][col] == "1":
-                    bfs(row, col)
+                    # bfs(row, col)
+                    dfs(row, col)
                     island_count += 1
 
         return island_count 
