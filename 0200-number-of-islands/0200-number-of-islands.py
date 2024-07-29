@@ -12,7 +12,6 @@ class Solution:
 
         rows, cols = len(grid), len(grid[0])
         island_count = 0
-        visited = set()
 
         def get_valid_neighbors(row, col):
             """Gets valid neighbors for a given cell.
@@ -36,7 +35,7 @@ class Solution:
                     continue
 
                 # Check if already visited or water
-                if (new_row, new_col) in visited or grid[new_row][new_col] == "0":
+                if grid[new_row][new_col] == "0":
                     continue
 
                 valid_neighbors.append((new_row, new_col))
@@ -50,19 +49,17 @@ class Solution:
                 row: The starting row of the island.
                 col: The starting column of the island.
             """
-
             queue = deque([(row, col)])
-            visited.add((row, col))
 
             while queue:
                 r, c = queue.popleft()
                 for nr, nc in get_valid_neighbors(r, c):
                     queue.append((nr, nc))
-                    visited.add((nr, nc))
+                    grid[nr][nc] = "0" # mark visited by making it as water
 
         for row in range(rows):
             for col in range(cols):
-                if grid[row][col] == "1" and (row, col) not in visited:
+                if grid[row][col] == "1":
                     bfs(row, col)
                     island_count += 1
 
