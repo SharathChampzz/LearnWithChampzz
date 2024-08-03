@@ -26,11 +26,7 @@ class Solution:
 
         for i in range(m):
             for j in range(n):
-                if board[i][j] != word[0]:
-                    continue
-                found = search(i, j, 0, [])
-                # print(f'Anaylsed for ({i}, {j}).. Result is {found}')
-                if found:
+                if board[i][j] == word[0] and search(i, j, 0, []):
                     return True
 
         return False
