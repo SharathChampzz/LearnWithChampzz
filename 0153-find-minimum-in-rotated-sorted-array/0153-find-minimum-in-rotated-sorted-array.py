@@ -14,6 +14,6 @@ class Solution:
                 right = mid # result can be mid itself or the left part. So move the pointer to mid
 
             else:
-                left = mid + 1 # left part is sorted but the whole array is not sorted, so the answer must be present in second half. it cant be mid
+                left = mid + 1 # left part is sorted but the whole array is not sorted, so the answer must be present in second half. it cant be mid.
 
         return nums[left]
