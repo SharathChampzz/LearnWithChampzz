@@ -1,11 +1,13 @@
 class Solution:
     def singleNumber(self, nums: List[int]) -> int:
         """
-        We are going to perform XOR here, as we need to indentify the element which doesnot have duplicate of it.
-        Because, in XOR, If A and B are same.. we will get output 0, If A and are B, we will get output 1
+        Here, we are asked to indentify the distinct number. We have XOR logic where if the bits are same, we will get result as 0. When distinct, we get 1
 
-        TakeAway: You can perform bitwise operations on set of numbers and order doesnot matter. So duplicate number will get
-        cancelled, and only unique number stays at the end.
+        Apply XOR on two numbers and if those are same, we will get 0. 
+
+        Also, one main important thing is, a (A ^ B) ^ C = A ^ (B ^ C) ===> order doesnot matter, If any two numbers are same it will nullify (becomes 0)
+
+        Associativite of XOR => In simpler terms, it means that when performing XOR operations on multiple values, the order in which you group them doesn't matter.
         """
         result = 0
         for i in nums:
