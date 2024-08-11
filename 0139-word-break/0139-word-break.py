@@ -24,32 +24,6 @@ class Solution:
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     def InternetwordBreak(self, s: str, wordDict: List[str]) -> bool:
         n = len(s)
         dp = [False] * (n + 1)
