@@ -1,6 +1,7 @@
 class Solution:
     def lengthOfLIS(self, nums: List[int]) -> int:
         total_nums = len(nums)
+        result = 1
 
         # initialize the DB array
         longest = [1] * total_nums # atleast 1 will be the length for any index
@@ -15,7 +16,8 @@ class Solution:
                     next_max = max(next_max, longest[j])
 
             longest[i] += next_max  # nothing but 1 + max of next greatest length
+            result = max(result, longest[i])
 
-        return max(longest)
+        return result
 
 
