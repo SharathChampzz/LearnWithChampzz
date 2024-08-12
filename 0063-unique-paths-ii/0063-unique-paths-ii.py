@@ -1,5 +1,7 @@
 class Solution:
     def uniquePathsWithObstacles(self, obstacleGrid: List[List[int]]) -> int:
+        # Take sum from left and top, to get the total paths for the current index
+        
         m, n = len(obstacleGrid), len(obstacleGrid[0])
 
         if obstacleGrid[0][0] == 1:
