@@ -1,26 +1,25 @@
 class Solution:
     def wordPattern(self, pattern: str, s: str) -> bool:
         mapping = {}
-        words = s.split()
-
-        # there is no full match
-        if len(pattern) != len(words):
-            return False
+        visited = set() # or we can have char_to_word or word_to_char mapping
         
+        s = s.split(' ')
+        s_len  = len(s)
+
+        if s_len != len(pattern):
+            return False
+
         for index, char in enumerate(pattern):
-            
-            # if pattern encountered for the first time, add the mapping
             if char not in mapping:
-                
-                # check if pattern is already mapped to some other word
-                if words[index] in mapping.values():
+
+                if s[index] in visited:
                     return False
-                mapping[char] = words[index]
-                
+
+                mapping[char] = s[index]
+                visited.add(s[index])
+
             else:
-                if mapping[char] != words[index]:
+                if mapping[char] != s[index]:
                     return False
 
         return True
-                
-        
